@@ -1,7 +1,6 @@
 class BookmarksController < ApplicationController
 
   def new
-    set_list
     @bookmark = Bookmark.new
   end
 
@@ -16,17 +15,18 @@ class BookmarksController < ApplicationController
     end
   end
 
-
   def destroy
     @bookmark = Bookmark.find(params[:id])
+    @list = @bookmark.list
     @bookmark.destroy
-    redirect_to list_path(@bookmark.list), status: :see_other
+    redirect_to list_path(@list), status: :see_other
   end
 
   private
 
   def set_list
     @list = List.find(params[:list_id])
+    # :list_id because within ... look in routes
   end
 
 

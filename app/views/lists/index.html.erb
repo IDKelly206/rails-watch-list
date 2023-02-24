@@ -1,7 +1,14 @@
-<h1>SHOW List of movies</h1>
+<div class="navbar-lewagon">
+  <h1>SHOW List of movies</h1>
+</div>
+<div>
+  <div class=container>
 
-<ul>
-<% @lists.each do |list|%>
-<p><%= list.name%></p>
-<% end %>
-</ul>
+
+    <ul>
+    <% @lists.each do |list|%>
+    <p><%= link_to "#{list.name}", list%></p>
+    <% end %>
+    </ul>
+  </div>
+</div>

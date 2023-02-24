@@ -1,1 +1,20 @@
-<h1>SHOW specific list item</h1>
+<div class="navbar-lewagon">
+  <h1>SHOW specific list item</h1>
+</div>
+<h2>List: <%= @list.name %></h2>
+
+<% @list.bookmarks.each do |bookmark| %>
+  <p><%= bookmark.comment%></p>
+  <p><%= bookmark.movie.title %></p>
+  <p><%= bookmark.movie.overview %></p>
+  <p><%= bookmark.movie.rating %></p>
+  <p><%= image_tag bookmark.movie.poster_url, alt: bookmark.movie.title, width: 100 %> </p>
+<% end %>
+
+
+<%# Add new bookmark to list %>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.association :movie %>
+  <%= f.submit "Create a Movie List" %>
+<% end %>
